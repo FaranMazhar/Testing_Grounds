@@ -17,7 +17,6 @@ AGun::AGun()
 	FP_Gun->SetOnlyOwnerSee(false);			// otherwise won't be visible in the multiplayer
 	FP_Gun->bCastDynamicShadow = false;
 	FP_Gun->CastShadow = false;
-	// FP_Gun->SetupAttachment(Mesh1P, TEXT("GripPoint"));
 	FP_Gun->SetupAttachment(RootComponent);
 
 	FP_MuzzleLocation = CreateDefaultSubobject<USceneComponent>(TEXT("MuzzleLocation"));
@@ -44,6 +43,7 @@ void AGun::OnFire()
 	// try and fire a projectile
 	if (ProjectileClass != nullptr)
 	{
+		
 		UWorld* const World = GetWorld();
 		if (World != nullptr)
 		{
