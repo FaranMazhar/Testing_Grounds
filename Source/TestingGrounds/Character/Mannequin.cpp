@@ -4,6 +4,7 @@
 #include "Mannequin.h"
 #include "Camera/CameraComponent.h"
 #include "../Weapons/Gun.h"
+#include "Components/InputComponent.h"
 
 // Sets default values
 AMannequin::AMannequin()
@@ -38,6 +39,11 @@ void AMannequin::BeginPlay()
 	Gun = GetWorld()->SpawnActor<AGun>(GunBlueprint);
 	Gun->AttachToComponent(Mesh1P, FAttachmentTransformRules(EAttachmentRule::SnapToTarget, true), TEXT("GripPoint")); //Attach gun mesh component to Skeleton, doing it here because the skelton is not yet created in the constructor
 	Gun->AnimInstance = Mesh1P->GetAnimInstance();
+
+	if (InputComponent != NULL)
+	{
+		InputComponent->BindAction("Fire", IE_Pressed, this, &AMannequin::PullTrigger);
+	}
 	
 }
 
@@ -55,7 +61,7 @@ void AMannequin::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent
 
 }
 
-void AMannequin::Fire()
+void AMannequin::PullTrigger()
 {
 	Gun->OnFire();
 }

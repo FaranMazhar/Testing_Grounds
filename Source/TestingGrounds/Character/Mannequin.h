@@ -35,7 +35,7 @@ public:
 		TSubclassOf<AGun> GunBlueprint;
 
 	UFUNCTION(BlueprintCallable, Category = "Weapon")
-		void Fire();
+		void PullTrigger();
 
 private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
