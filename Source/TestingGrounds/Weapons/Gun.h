@@ -37,10 +37,15 @@ public:
 
 	/** AnimMontage to play each time we fire */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
-		UAnimMontage* FireAnimation;
-
+		UAnimMontage* FireAnimation3P;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
-		UAnimInstance* AnimInstance;
+		UAnimMontage* FireAnimation1P;
+
+	UPROPERTY()
+		UAnimInstance* AnimInstance3P;
+	UPROPERTY()
+		UAnimInstance* AnimInstance1P;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
